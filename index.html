@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="author" content="Merlode" />
+        <meta name="description" content="Ce projet à été créé pour rendre plus facile la construction de tabata. Il permet de configurer son sport le plus facilement possible" />
         <title>Configurez votre tabata !</title>
         <!-- Favicon-->
         <link rel="icon" type="image/png" href="assets/img/icon.png" />
@@ -27,7 +27,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="modal" data-target="#portfolioModal1">Configuration</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" data-toggle="modal" data-target="#portfolioModal1" href="#">Configuration</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,6 +36,8 @@
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Chronomètre-->
+				<h1 class="text-uppercase mb-0" id="exercice">EXERCICE</h1>
+				<p><br/></p>
 				<h1 class="masthead-heading text-uppercase mb-0" id="chrono"></h1>
 				<!-- Icon Divider-->
                 <div class="divider-custom divider-light">
@@ -44,7 +46,9 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">Start Bootstrap</h1>
+				<button type="button" class="btn btn-light btn-lg btn-block">COMMENCER LE TABATA</button>
+				<p></p>
+				<a href="#" class="btn btn-info btn-lg disabled" tabindex="-1" role="button" aria-disabled="true" data-toggle="modal" data-target="#portfolioModal2"><i class="fa fa-file" aria-hidden="true"></i> GÉNÉRER UN PDF</a>
             </div>
         </header>
 
@@ -54,7 +58,7 @@
                 <div class="row">
                     <!-- Footer Location-->
                     <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Créateur</h4>
+                        <h4 class="text-uppercase mb-4">Le créateur</h4>
                         <p class="lead mb-0">
                             Ce site web a été créé et développé par <b>Merlode</b>
                         </p>
@@ -62,10 +66,10 @@
                     <!-- Footer Social Icons-->
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         <h4 class="text-uppercase mb-4">Me retrouver</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/merlode.dg"><i class="fab fa-fw fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://twitter.com/Merlode1"><i class="fab fa-fw fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.youtube.com/channel/UCGtja34XX5KQCoHruDAIlcg"><i class="fab fa-fw fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/Merlode11"><i class="fab fa-fw fa-github"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" target="_blank" href="https://www.facebook.com/merlode.dg"><i class="fab fa-fw fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" target="_blank" href="https://twitter.com/Merlode1"><i class="fab fa-fw fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" target="_blank" href="https://www.youtube.com/channel/UCGtja34XX5KQCoHruDAIlcg"><i class="fab fa-fw fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" target="_blank" href="https://github.com/Merlode11"><i class="fab fa-fw fa-github"></i></a>
                     </div>
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
@@ -305,7 +309,7 @@
 													<input type="text" class="form-control" id="formGroupExampleInput" placeholder="https://youtu.be/jeg_TJvkSjg">
 												</div>
 												<div class="custom-control custom-checkbox">
-												  <input type="checkbox" class="custom-control-input" id="customCheck1">
+												  <input type="checkbox" class="custom-control-input" id="customCheck1" checked autocomplete>
 												  <label class="custom-control-label" for="customCheck1">Avoir la voix du temps restant</label>
 												</div>
 												</div>
@@ -322,45 +326,47 @@
                     </div>
                 </div>
             </div>
-			<div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-labelledby="portfolioModal1Label" aria-hidden="true">
-            <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="fas fa-times"></i></span>
-                    </button>
-                    <div class="modal-body text-center">
-                        <div class="container">
-                            <div class="row justify-content-center">
-                                <div class="col-lg-8">
-                                    <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal1Label">Générer un PDF</h2>
-                                    <!-- Icon Divider-->
-                                    <div class="divider-custom">
-                                        <div class="divider-custom-line"></div>
-                                        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                        <div class="divider-custom-line"></div>
-                                    </div>
-                                    <!-- Portfolio Modal - Text-->
-									<p>Test</p>
+		</div>
+		<div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-labelledby="portfolioModal2Label" aria-hidden="true">
+			<div class="modal-dialog modal-xl" role="document">
+				<div class="modal-content">
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true"><i class="fas fa-times"></i></span>
+					</button>
+					<div class="modal-body text-center">
+						<div class="container">
+							<div class="row justify-content-center">
+								<div class="col-lg-8">
+									<!-- Portfolio Modal - Title-->
+									<h2 class="portfolio-modal-title text-secondary text-uppercase mb-0" id="portfolioModal2Label">Générer un PDF</h2>
+									<!-- Icon Divider-->
+									<div class="divider-custom">
+										<div class="divider-custom-line"></div>
+										<div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+										<div class="divider-custom-line"></div>
+									</div>
+									<h3 class="mb-5">Quel est le ressenti que vous avez eu lors de cette scéance ?</h3>
+									<form>
+										<div class="form-group">
+											<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+										</div>
+									</form>
 									<button class="btn btn-primary" data-dismiss="modal">
-                                        <i class="fas fa-times fa-fw"></i>
-                                        Fermer la config
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+										<i class="fas fa-times fa-fw"></i>
+										Générer le pdf
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Third party plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-        <!-- Contact form JS-->
-        <script src="assets/mail/jqBootstrapValidation.js"></script>
-        <script src="assets/mail/contact_me.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
     </body>

@@ -159,7 +159,7 @@ sup {
 }
 
 a {
-  color: #1abc9c;
+  color: #fff;
   text-decoration: none;
   background-color: transparent;
 }
@@ -169,11 +169,11 @@ a:hover {
 }
 
 a:not([href]):not([class]) {
-  color: inherit;
+  color: #fff;
   text-decoration: none;
 }
 a:not([href]):not([class]):hover {
-  color: inherit;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -2435,6 +2435,8 @@ a.btn.disabled,
 fieldset:disabled a.btn {
   pointer-events: none;
 }
+
+
 
 .btn-primary {
   color: #fff;
@@ -10118,7 +10120,7 @@ h3 {
   padding-bottom: 6rem;
 }
 .masthead .masthead-heading {
-  font-size: 2.75rem;
+  font-size: 6em;
   line-height: 2.75rem;
 }
 .masthead .masthead-subheading {
@@ -10134,21 +10136,14 @@ h3 {
     padding-bottom: 6rem;
   }
   .masthead .masthead-heading {
-    font-size: 4rem;
+    font-size: 6rem;
     line-height: 3.5rem;
   }
   .masthead .masthead-subheading {
     font-size: 1.5rem;
   }
 }
-.portfolio .portfolio-item {
-  cursor: pointer;
-  position: relative;
-  display: block;
-  max-width: 25rem;
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
+
 .portfolio .portfolio-item .portfolio-item-caption {
   position: absolute;
   top: 0;
