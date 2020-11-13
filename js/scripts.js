@@ -132,7 +132,8 @@ const ressenti = document.getElementById("ressenti")
 
 // On Click en startbtn
 startbtn.onclick = function(){
-	chrono.style.display = "block";
+    chrono.classList.remove("text-danger")
+    chrono.style.display = "block";
 	mhdiv.style.display = "flex";
 
     setTimeout(function(){ chrono.innerHTML = "PRÊT ?" }, 1000);
@@ -181,23 +182,45 @@ if (exsChoosed.includes("Choisir")) {
     error.style.display ="none"
 }
 
-var tabata = function () {
+function tabata () {
     exsChoosed.forEach(e => {
         ex.innerHTML = e
-        const x = setInterval(function() {
-            let timeLeft = 20
-            chrono.innerHTML = "00 : " + timeLeft;
-            timeLeft = (timeLeft - 1)
-            console.log(timeLeft)
-            if (timeLeft <= 3) {
-                const audio = new Audio('SPORT-TABATA-WEBSITE/assets/sounds/STOP.mp3');
-                audio.play();
-                setTimeout(function () {
-                    clearInterval(x);
-                    chrono.innerHTML = "STOP";
-                    chrono.classList.add("text-danger")
-                }, 3000);
-            }
-        }, 1000);
-    })
+            const TIME_LIMIT = 20;
+            let timeLeft = TIME_LIMIT;
+            startTimer(TIME_LIMIT, timeLeft)
+        })
+}
+
+
+function startTimer(TIME_LIMIT, timeLeft) {
+    let timePassed = 0;
+    chrono.classList.remove("text-danger")
+    const timerInterval = setInterval(() => {
+        timePassed = timePassed += 1;
+        console.log(timePassed)
+        timeLeft = TIME_LIMIT - timePassed;
+        console.log(timeLeft)
+        chrono.innerHTML = formatTime(timeLeft);
+        console.log(formatTime(timeLeft))
+        if (timeLeft <= 3) {
+            const audio = new Audio('/assets/sounds/STOP.mp3');
+            audio.play();
+            setTimeout(function () {
+                clearInterval(timerInterval);
+                chrono.innerHTML = "STOP";
+                chrono.classList.add("text-danger")
+            }, 3000);
+        }
+    }, 1000);
+}
+
+function formatTime(time) {
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+
+    if (seconds < 10) {
+        seconds = `0${seconds}`;
+    }
+
+    return `${minutes}:${seconds}`;
 }
