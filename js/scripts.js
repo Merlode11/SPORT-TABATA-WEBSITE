@@ -78,24 +78,34 @@ var startbtn = document.getElementById("start");
 
 // Exercices
 const exsForm = document.getElementById("exsForm")
-const ex1 = exsForm.getElementById("ex1")
-const ex2 = exsForm.getElementById("ex2")
-const ex3 = exsForm.getElementById("ex3")
-const ex4 = exsForm.getElementById("ex4")
-const ex5 = exsForm.getElementById("ex5")
-const ex6 = exsForm.getElementById("ex6")
-const ex7 = exsForm.getElementById("ex7")
-const ex8 = exsForm.getElementById("ex8")
+const ex1 = document.getElementById("ex1")
+const ex2 = document.getElementById("ex2")
+const ex3 = document.getElementById("ex3")
+const ex4 = document.getElementById("ex4")
+const ex5 = document.getElementById("ex5")
+const ex6 = document.getElementById("ex6")
+const ex7 = document.getElementById("ex7")
+const ex8 = document.getElementById("ex8")
+
+let exsChoosed = []
+exsChoosed.push(ex1.options[ex1.selectedIndex].text)
+exsChoosed.push(ex2.options[ex2.selectedIndex].text)
+exsChoosed.push(ex3.options[ex3.selectedIndex].text)
+exsChoosed.push(ex4.options[ex4.selectedIndex].text)
+exsChoosed.push(ex5.options[ex5.selectedIndex].text)
+exsChoosed.push(ex6.options[ex6.selectedIndex].text)
+exsChoosed.push(ex7.options[ex7.selectedIndex].text)
+exsChoosed.push(ex8.options[ex8.selectedIndex].text)
 
 const times = document.getElementById("times")
-const repsNum = times.getElementById("repsNum")
-const RecupTime = times.getElementById("RecupTime")
+const repsNum = document.getElementById("repsNum")
+const RecupTime = document.getElementById("RecupTime")
 
 const ressenti = document.getElementById("ressenti")
 
 
   // Set the date we're counting down to
-var countDownDate = new Date("Nov 12, 2020 14:23:25").getTime();
+var countDownDate = new Date("Nov 13, 2020 13:27:25").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -127,26 +137,45 @@ var x = setInterval(function() {
 startbtn.onclick = function(){
 	ex.style.display = "block";
 	chrono.style.display = "block";
-	mhdiv.style.display = "block";
+	mhdiv.style.display = "flex";
 }
 
 // On form change
-startbtn.onchange = function(){
+exsForm.onchange = function(){
 	// Array
-	const ex1 = exsForm.getElementById("ex1")
-	const ex2 = exsForm.getElementById("ex2")
-	const ex3 = exsForm.getElementById("ex3")
-	const ex4 = exsForm.getElementById("ex4")
-	const ex5 = exsForm.getElementById("ex5")
-	const ex6 = exsForm.getElementById("ex6")
-	const ex7 = exsForm.getElementById("ex7")
-	const ex8 = exsForm.getElementById("ex8")
+	exsChoosed = []
+	exsChoosed.push(ex1.options[ex1.selectedIndex].text)
+	exsChoosed.push(ex2.options[ex2.selectedIndex].text)
+	exsChoosed.push(ex3.options[ex3.selectedIndex].text)
+	exsChoosed.push(ex4.options[ex4.selectedIndex].text)
+	exsChoosed.push(ex5.options[ex5.selectedIndex].text)
+	exsChoosed.push(ex6.options[ex6.selectedIndex].text)
+	exsChoosed.push(ex7.options[ex7.selectedIndex].text)
+	exsChoosed.push(ex8.options[ex8.selectedIndex].text)
+	console.log("Array update")
+	
+	if (exsChoosed.includes("Choisir") && hasDuplicates(exsChoosed)) {
+		startbtn.disabled = true
+	} else {
+		startbtn.disabled = false
+	}
 }
-
 // selectedEx1 = ex1.options[ex1.selectedIndex].text
 
 ex.style.display = "none";
 chrono.style.display = "none";
 mhdiv.style.display = "none";
+
+function hasDuplicates(array) {
+    var valuesSoFar = [];
+    for (var i = 0; i < array.length; ++i) {
+        var value = array[i];
+        if (valuesSoFar.indexOf(value) !== -1) {
+            return true;
+        }
+        valuesSoFar.push(value);
+    }
+    return false;
+}
 	
   
