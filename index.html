@@ -47,8 +47,8 @@
                 </div>
                 <!-- Masthead Heading-->
 				<button type="button" class="btn btn-light btn-lg btn-block" id="start" disabled>COMMENCER LE TABATA</button>
-				<p></p>
-				<a href="#" class="btn btn-info btn-lg disabled" tabindex="-1" role="button" aria-disabled="true" data-toggle="modal" data-target="#portfolioModal2"><i class="fa fa-file" aria-hidden="true"></i> GÉNÉRER UN PDF</a>
+				<p class="btn text-danger" id="error">Le tabata ne peut actuellement par être activé. Cela est parce que vous n'avez pas encore sélectionné les exercices</p>
+				<a href="#" id="genrate_pdf" class="btn btn-info btn-lg disabled" tabindex="-1" role="button" aria-disabled="true" data-toggle="modal" data-target="#portfolioModal2"><i class="fa fa-file" aria-hidden="true"></i> GÉNÉRER UN PDF</a>
             </div>
         </header>
 
@@ -273,19 +273,17 @@
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Nombre de répétitions</label>
 												  <select class="custom-select mr-sm-2" id="repsNum">
-													<option selected disabled>Choisir</option>
 													<option value="2">Deux</option>
-													<option value="3">Trois</option>.
+													<option value="3" selected>Trois</option>.
 													<option value="4">Quatre</option>
 												  </select>
 												</div>
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Temps de récupération</label>
 												  <select class="custom-select mr-sm-2" id="RecupTime">
-													<option selected disabled>Choisir</option>
 													<option value="120">Deux minutes</option>
 													<option value="150">Deux minutes 30 secondes</option>
-													<option value="180">Trois minutes</option>
+													<option value="180" selected>Trois minutes</option>
 													<option value="210">Trois minutes 30 secondes</option>
 													<option value="240">Quatre minutes</option>
 												  </select>

@@ -66,8 +66,7 @@
     });
   
   })(jQuery); // End of use strict
-  
-  
+
 /* Get the different elements */
 
 // Views
@@ -75,6 +74,8 @@ var chrono = document.getElementById("chrono")
 var ex = document.getElementById("exercice");
 var mhdiv = document.getElementById("masthead-divider");
 var startbtn = document.getElementById("start");
+var generate_pdf = document.getElementById("genrate_pdf");
+var error = document.getElementById("error")
 
 // Exercices
 const exsForm = document.getElementById("exsForm")
@@ -103,41 +104,45 @@ const RecupTime = document.getElementById("RecupTime")
 
 const ressenti = document.getElementById("ressenti")
 
-
-  // Set the date we're counting down to
-var countDownDate = new Date("Nov 13, 2020 13:27:25").getTime();
-
 // Update the count down every 1 second
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-    
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-    
-  // Time calculations for days, hours, minutes and seconds
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-  // Output the result in an element with id="demo"
-  chrono.innerHTML = minutes + " : " + seconds;
-    
-  // If the count down is over, write some text 
-  if (distance <= 1) {
-    clearInterval(x);
-    chrono.innerHTML = "STOP";
-	chrono.classList.add("text-danger")
-  }
-}, 1000);
+// var x = setInterval(function() {
+// 
+//   // Get today's date and time
+//   var now = new Date().getTime();
+//     
+//   // Find the distance between now and the count down date
+//   var distance = countDownDate - now;
+//     
+//   // Time calculations for days, hours, minutes and seconds
+//   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+//   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+//     
+//   // Output the result in an element with id="demo"
+//   chrono.innerHTML = minutes + " : " + seconds;
+//     
+//   // If the count down is over, write some text
+//   if (distance <= 1) {
+//     clearInterval(x);
+//     chrono.innerHTML = "STOP";
+// 	chrono.classList.add("text-danger")
+//   }
+// }, 1000);
 
 /* Events */
 
-// On Clic en startbtn
+// On Click en startbtn
 startbtn.onclick = function(){
-	ex.style.display = "block";
 	chrono.style.display = "block";
 	mhdiv.style.display = "flex";
+
+    setTimeout(function(){ chrono.innerHTML = "PRÊT ?" }, 1000);
+    setTimeout(function(){ chrono.innerHTML = "FEU" }, 2000);
+    setTimeout(function(){ chrono.innerHTML = "GO !" }, 3000);
+    setTimeout(function(){
+        ex.style.display = "block";
+        tabata()
+    }, 4000);
+
 }
 
 // On form change
@@ -152,30 +157,47 @@ exsForm.onchange = function(){
 	exsChoosed.push(ex6.options[ex6.selectedIndex].text)
 	exsChoosed.push(ex7.options[ex7.selectedIndex].text)
 	exsChoosed.push(ex8.options[ex8.selectedIndex].text)
-	console.log("Array update")
-	
-	if (exsChoosed.includes("Choisir") && hasDuplicates(exsChoosed)) {
-		startbtn.disabled = true
-	} else {
-		startbtn.disabled = false
-	}
+
+    if (exsChoosed.includes("Choisir")) {
+        startbtn.disabled = true
+        error.style.display ="block"
+    } else {
+        startbtn.disabled = false
+        error.style.display ="none"
+    }
 }
 // selectedEx1 = ex1.options[ex1.selectedIndex].text
 
 ex.style.display = "none";
 chrono.style.display = "none";
 mhdiv.style.display = "none";
+generate_pdf.style.display = "none";
 
-function hasDuplicates(array) {
-    var valuesSoFar = [];
-    for (var i = 0; i < array.length; ++i) {
-        var value = array[i];
-        if (valuesSoFar.indexOf(value) !== -1) {
-            return true;
-        }
-        valuesSoFar.push(value);
-    }
-    return false;
+if (exsChoosed.includes("Choisir")) {
+    startbtn.disabled = true
+    error.style.display ="block"
+} else {
+    startbtn.disabled = false
+    error.style.display ="none"
 }
-	
-  
+
+var tabata = function () {
+    exsChoosed.forEach(e => {
+        ex.innerHTML = e
+        const x = setInterval(function() {
+            let timeLeft = 20
+            chrono.innerHTML = "00 : " + timeLeft;
+            timeLeft = (timeLeft - 1)
+            console.log(timeLeft)
+            if (timeLeft <= 3) {
+                const audio = new Audio('SPORT-TABATA-WEBSITE/assets/sounds/STOP.mp3');
+                audio.play();
+                setTimeout(function () {
+                    clearInterval(x);
+                    chrono.innerHTML = "STOP";
+                    chrono.classList.add("text-danger")
+                }, 3000);
+            }
+        }, 1000);
+    })
+}
