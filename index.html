@@ -40,13 +40,13 @@
 				<p><br/></p>
 				<h1 class="masthead-heading text-uppercase mb-0" id="chrono"></h1>
 				<!-- Icon Divider-->
-                <div class="divider-custom divider-light">
+                <div class="divider-custom divider-light" id="masthead-divider">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Masthead Heading-->
-				<button type="button" class="btn btn-light btn-lg btn-block">COMMENCER LE TABATA</button>
+				<button type="button" class="btn btn-light btn-lg btn-block" id="start" disabled>COMMENCER LE TABATA</button>
 				<p></p>
 				<a href="#" class="btn btn-info btn-lg disabled" tabindex="-1" role="button" aria-disabled="true" data-toggle="modal" data-target="#portfolioModal2"><i class="fa fa-file" aria-hidden="true"></i> GÉNÉRER UN PDF</a>
             </div>
@@ -108,11 +108,11 @@
 									<div class="row">
 										<div class="col-sm">
 											<h3 class="mb-5"> Configuration de l'activitée</h3>
-											<form class="mb-5">
+											<form class="mb-5" id="exsForm">
 												<div class="form-row align-items-center">
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 1</label>
-												  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+												  <select class="custom-select mr-sm-2" id="ex1">
 													<option selected disabled>Choisir</option>
 													<option value="1">Montée de genoux sur place</option>
 													<option value="2">Jumbing jack</option>
@@ -131,7 +131,7 @@
 												</div>
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 2</label>
-												  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+												  <select class="custom-select mr-sm-2" id="ex2">
 													<option selected disabled>Choisir</option>
 													<option value="1">Montée de genoux sur place</option>
 													<option value="2">Jumbing jack</option>
@@ -150,7 +150,7 @@
 												</div>
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 3</label>
-												  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+												  <select class="custom-select mr-sm-2" id="ex3">
 													<option selected disabled>Choisir</option>
 													<option value="1">Montée de genoux sur place</option>
 													<option value="2">Jumbing jack</option>
@@ -169,7 +169,7 @@
 												</div>
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 4</label>
-												  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+												  <select class="custom-select mr-sm-2" id="ex4">
 													<option selected disabled>Choisir</option>
 													<option value="1">Montée de genoux sur place</option>
 													<option value="2">Jumbing jack</option>
@@ -189,7 +189,7 @@
 												
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 5</label>
-												  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+												  <select class="custom-select mr-sm-2" id="ex5">
 													<option selected disabled>Choisir</option>
 													<option value="1">Montée de genoux sur place</option>
 													<option value="2">Jumbing jack</option>
@@ -208,7 +208,7 @@
 												</div>
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 6</label>
-												  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+												  <select class="custom-select mr-sm-2" id="ex6">
 													<option selected disabled>Choisir</option>
 													<option value="1">Montée de genoux sur place</option>
 													<option value="2">Jumbing jack</option>
@@ -227,7 +227,7 @@
 												</div>
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 7</label>
-												  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+												  <select class="custom-select mr-sm-2" id="ex7">
 													<option selected disabled>Choisir</option>
 													<option value="1">Montée de genoux sur place</option>
 													<option value="2">Jumbing jack</option>
@@ -246,7 +246,7 @@
 												</div>
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 8</label>
-												  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+												  <select class="custom-select mr-sm-2" id="ex8">
 													<option selected disabled>Choisir</option>
 													<option value="1">Montée de genoux sur place</option>
 													<option value="2">Jumbing jack</option>
@@ -268,11 +268,11 @@
 										</div>
 										<div class="col-sm">
 											<h3 class="mb-5"> Configuration des durées</h3>
-											<form class="mb-5">
+											<form class="mb-5" id="times">
 												<div class="form-row align-items-center">
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Nombre de répétitions</label>
-												  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+												  <select class="custom-select mr-sm-2" id="repsNum">
 													<option selected disabled>Choisir</option>
 													<option value="2">Deux</option>
 													<option value="3">Trois</option>.
@@ -281,7 +281,7 @@
 												</div>
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Temps de récupération</label>
-												  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+												  <select class="custom-select mr-sm-2" id="RecupTime">
 													<option selected disabled>Choisir</option>
 													<option value="120">Deux minutes</option>
 													<option value="150">Deux minutes 30 secondes</option>
@@ -297,7 +297,7 @@
 												<div class="form-row align-items-center">
 												<div class="col-auto my-1">
 												  <label class="mr-sm-2" for="inlineFormCustomSelect">Musique dans la base</label>
-												  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+												  <select class="custom-select mr-sm-2" id="music">
 													<option selected>Aucune</option>
 													<option value="2">Deux</option>
 													<option value="3">Trois</option>.
@@ -306,7 +306,7 @@
 												</div>
 												<div class="form-group">
 													<label for="formGroupExampleInput">Musique customisé (lien Youtube)</label>
-													<input type="text" class="form-control" id="formGroupExampleInput" placeholder="https://youtu.be/jeg_TJvkSjg">
+													<input type="text" class="form-control" id="customMusic" placeholder="https://youtu.be/jeg_TJvkSjg">
 												</div>
 												<div class="custom-control custom-checkbox">
 												  <input type="checkbox" class="custom-control-input" id="customCheck1" checked autocomplete>
@@ -348,7 +348,7 @@
 									<h3 class="mb-5">Quel est le ressenti que vous avez eu lors de cette scéance ?</h3>
 									<form>
 										<div class="form-group">
-											<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+											<textarea class="form-control" id="ressenti" rows="3"></textarea>
 										</div>
 									</form>
 									<button class="btn btn-primary" data-dismiss="modal">
