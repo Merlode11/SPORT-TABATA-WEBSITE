@@ -67,6 +67,33 @@
   
   })(jQuery); // End of use strict
   
+  
+/* Get the different elements */
+
+// Views
+var chrono = document.getElementById("chrono")
+var ex = document.getElementById("exercice");
+var mhdiv = document.getElementById("masthead-divider");
+var startbtn = document.getElementById("start");
+
+// Exercices
+const exsForm = document.getElementById("exsForm")
+const ex1 = exsForm.getElementById("ex1")
+const ex2 = exsForm.getElementById("ex2")
+const ex3 = exsForm.getElementById("ex3")
+const ex4 = exsForm.getElementById("ex4")
+const ex5 = exsForm.getElementById("ex5")
+const ex6 = exsForm.getElementById("ex6")
+const ex7 = exsForm.getElementById("ex7")
+const ex8 = exsForm.getElementById("ex8")
+
+const times = document.getElementById("times")
+const repsNum = times.getElementById("repsNum")
+const RecupTime = times.getElementById("RecupTime")
+
+const ressenti = document.getElementById("ressenti")
+
+
   // Set the date we're counting down to
 var countDownDate = new Date("Nov 12, 2020 14:23:25").getTime();
 
@@ -84,13 +111,42 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
   // Output the result in an element with id="demo"
-  document.getElementById("chrono").innerHTML = minutes + " : " + seconds;
+  chrono.innerHTML = minutes + " : " + seconds;
     
   // If the count down is over, write some text 
   if (distance <= 1) {
     clearInterval(x);
-    document.getElementById("chrono").innerHTML = "STOP";
-	document.getElementById("chrono").classList.add("text-danger")
+    chrono.innerHTML = "STOP";
+	chrono.classList.add("text-danger")
   }
 }, 1000);
+
+/* Events */
+
+// On Clic en startbtn
+startbtn.onclick = function(){
+	ex.style.display = "block";
+	chrono.style.display = "block";
+	mhdiv.style.display = "block";
+}
+
+// On form change
+startbtn.onchange = function(){
+	// Array
+	const ex1 = exsForm.getElementById("ex1")
+	const ex2 = exsForm.getElementById("ex2")
+	const ex3 = exsForm.getElementById("ex3")
+	const ex4 = exsForm.getElementById("ex4")
+	const ex5 = exsForm.getElementById("ex5")
+	const ex6 = exsForm.getElementById("ex6")
+	const ex7 = exsForm.getElementById("ex7")
+	const ex8 = exsForm.getElementById("ex8")
+}
+
+// selectedEx1 = ex1.options[ex1.selectedIndex].text
+
+ex.style.display = "none";
+chrono.style.display = "none";
+mhdiv.style.display = "none";
+	
   
