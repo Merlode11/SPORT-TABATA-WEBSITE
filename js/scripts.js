@@ -89,14 +89,14 @@ const ex7 = document.getElementById("ex7")
 const ex8 = document.getElementById("ex8")
 
 let exsChoosed = []
-exsChoosed.push(ex1.options[ex1.selectedIndex].text)
-exsChoosed.push(ex2.options[ex2.selectedIndex].text)
-exsChoosed.push(ex3.options[ex3.selectedIndex].text)
-exsChoosed.push(ex4.options[ex4.selectedIndex].text)
-exsChoosed.push(ex5.options[ex5.selectedIndex].text)
-exsChoosed.push(ex6.options[ex6.selectedIndex].text)
-exsChoosed.push(ex7.options[ex7.selectedIndex].text)
-exsChoosed.push(ex8.options[ex8.selectedIndex].text)
+exsChoosed.push(ex1.options[ex1.selectedIndex])
+exsChoosed.push(ex2.options[ex2.selectedIndex])
+exsChoosed.push(ex3.options[ex3.selectedIndex])
+exsChoosed.push(ex4.options[ex4.selectedIndex])
+exsChoosed.push(ex5.options[ex5.selectedIndex])
+exsChoosed.push(ex6.options[ex6.selectedIndex])
+exsChoosed.push(ex7.options[ex7.selectedIndex])
+exsChoosed.push(ex8.options[ex8.selectedIndex])
 
 // Sounds
 const musicForm = document.getElementById("Musicform")
@@ -112,29 +112,6 @@ const RecupTime = document.getElementById("RecupTime")
 
 const ressenti = document.getElementById("ressenti")
 
-// Update the count down every 1 second
-// var x = setInterval(function() {
-// 
-//   // Get today's date and time
-//   var now = new Date().getTime();
-//     
-//   // Find the distance between now and the count down date
-//   var distance = countDownDate - now;
-//     
-//   // Time calculations for days, hours, minutes and seconds
-//   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-//   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-//     
-//   // Output the result in an element with id="demo"
-//   chrono.innerHTML = minutes + " : " + seconds;
-//     
-//   // If the count down is over, write some text
-//   if (distance <= 1) {
-//     clearInterval(x);
-//     chrono.innerHTML = "STOP";
-// 	chrono.classList.add("text-danger")
-//   }
-// }, 1000);
 
 /* On Page load */
 ex.style.display = "none";
@@ -162,27 +139,55 @@ startbtn.onclick = function(){
     YoutubeMusic.innerHTML = '<audio id="youtube" autoplay></audio>'
 
     chrono.innerHTML = "PRÊT ?"
-    Start_Music ()
     setTimeout(function(){ chrono.innerHTML = "FEU" }, 2000);
     setTimeout(function(){ chrono.innerHTML = "GO !" }, 3000);
     setTimeout(function(){
         ex.style.display = "block";
         tabata()
     }, 4000);
+    setTimeout(function(){
+         console.log(`Repos Start`)
+        ex.innerHTML = 'LONG REPOS'
+        startTimer(RecupTime.value, RecupTime.value, 'GO')
+    }, 240000);
+    console.log(repsNum.value)
+    setTimeout(function(){
+        tabata()
+    }, 240000 + RecupTime.value);
+
+    if (repsNum.value >= 3) {
+        setTimeout(function(){
+            ex.innerHTML = 'LONG REPOS'
+            startTimer(RecupTime.value, RecupTime.value, 'GO')
+        }, 240000 * 2 + RecupTime.value * 2);
+        setTimeout(function(){
+            tabata()
+        }, 240000 * 2 + RecupTime.value * 3);
+    }
+    if (repsNum.value >= 4) {
+        setTimeout(function(){
+            ex.innerHTML = 'LONG REPOS'
+            startTimer(RecupTime.value, RecupTime.value, 'GO')
+        }, 240000 * 3 + RecupTime.value * 3);
+        setTimeout(function(){
+            tabata()
+        }, 240000 * 3 + RecupTime.value * 4);
+    }
+
 }
 
 // On form change
 exsForm.onchange = function(){
 	// Array
 	exsChoosed = []
-	exsChoosed.push(ex1.options[ex1.selectedIndex].text)
-	exsChoosed.push(ex2.options[ex2.selectedIndex].text)
-	exsChoosed.push(ex3.options[ex3.selectedIndex].text)
-	exsChoosed.push(ex4.options[ex4.selectedIndex].text)
-	exsChoosed.push(ex5.options[ex5.selectedIndex].text)
-	exsChoosed.push(ex6.options[ex6.selectedIndex].text)
-	exsChoosed.push(ex7.options[ex7.selectedIndex].text)
-	exsChoosed.push(ex8.options[ex8.selectedIndex].text)
+	exsChoosed.push(ex1.options[ex1.selectedIndex])
+	exsChoosed.push(ex2.options[ex2.selectedIndex])
+	exsChoosed.push(ex3.options[ex3.selectedIndex])
+	exsChoosed.push(ex4.options[ex4.selectedIndex])
+	exsChoosed.push(ex5.options[ex5.selectedIndex])
+	exsChoosed.push(ex6.options[ex6.selectedIndex])
+	exsChoosed.push(ex7.options[ex7.selectedIndex])
+	exsChoosed.push(ex8.options[ex8.selectedIndex])
 
     if (exsChoosed.includes("Choisir")) {
         startbtn.disabled = true
@@ -193,10 +198,11 @@ exsForm.onchange = function(){
     }
 }
 Custom.onchange = function () {
+    console.log("Music custom updated")
     var url = Custom.value
     var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     var match = url.match(regExp);
-    if (match) {
+    if (!match) {
         errorCustom.style.display ="block"
     } else {
         errorCustom.style.display ="none"
@@ -205,17 +211,43 @@ Custom.onchange = function () {
 
 // selectedEx1 = ex1.options[ex1.selectedIndex].text
 
+/* Functions */
+let exNum = 0
 function tabata () {
-    exsChoosed.forEach(e => {
-        ex.innerHTML = e
-        startTimer(20, 20, 'STOP')
-        setTimeout(function(){
-            chrono.classList.remove("text-danger")
-            ex.innerHTML = 'REPOS'
-            startTimer(10, 10, 'GO')
-        }, 20000)
-        console.log(next)
-    })
+    Start_Music()
+    next(exNum)
+    setTimeout(function(){
+        next(exNum)
+    }, 30000)
+    setTimeout(function(){
+        next(exNum)
+    }, 60000)
+    setTimeout(function(){
+        next(exNum)
+    }, 90000)
+    setTimeout(function(){
+        next(exNum)
+    }, 120000)
+    setTimeout(function(){
+        next(exNum)
+    }, 150000)
+    setTimeout(function(){
+        next(exNum)
+    }, 180000)
+    setTimeout(function(){
+        next(exNum)
+    }, 210000)
+}
+
+function next(n) {
+    ex.innerHTML = "EX" + (n +1) + " : " + exsChoosed[n].text
+    startTimer(20, 20, 'STOP')
+
+    if (n !== 7) setTimeout(function(){
+             ex.innerHTML = 'REPOS'
+             startTimer(10, 10, 'GO')
+    }, 20002)
+    exNum = exNum +1
 }
 
 // State = text at end
@@ -226,13 +258,16 @@ function startTimer(TIME_LIMIT, timeLeft, state, next) {
             timePassed = timePassed += 1;
             timeLeft = TIME_LIMIT - timePassed;
             chrono.innerHTML = formatTime(timeLeft);
+            if (timeLeft === 5 && Voix_OFF.checked && state === 'GO') {
+                const audio = new Audio(`https://raw.githubusercontent.com/Merlode11/SPORT-TABATA-WEBSITE/main/assets/sounds/Exercices/${exsChoosed[exNum].value}.mp3`);
+                audio.play();
+            }
             if (timeLeft === 3 && Voix_OFF.checked) {
                 const audio = new Audio(`https://raw.githubusercontent.com/Merlode11/SPORT-TABATA-WEBSITE/main/assets/sounds/Exercices/${state}.mp3`);
                 audio.play();
             }
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
-                chrono.classList.add("text-danger");
                 chrono.innerHTML = state;
             }
         }, 1000);
@@ -247,14 +282,15 @@ function formatTime(time) {
     }
     return `${minutes}:${seconds}`;
 }
-function Start_Music () {
 
+function Start_Music () {
     if (Custom.value && Music.options[Music.selectedIndex].text !== 'Aucune') {
+        let videoID = null;
         const url = Custom.value
         var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
         var match = url.match(regExp);
         if (match && match[2].length == 11) {
-            var videoID = match[2];
+            videoID = match[2];
         }
 
         // Fetch video info (using a proxy if avoid CORS errors)
