@@ -36,21 +36,24 @@
         <header class="masthead bg-primary text-white text-center">
             <div class="container d-flex align-items-center flex-column">
                 <!-- Masthead Chronomètre-->
-				<h1 class="text-uppercase mb-0" id="exercice">EXERCICE</h1>
+				<h1 class="text-uppercase mb-0" id="exercice" display="none">EXERCICE</h1>
 				<p><br/></p>
-				<h1 class="masthead-heading text-uppercase mb-0" id="chrono"></h1>
+				<h1 class="masthead-heading text-uppercase mb-0" id="chrono" display="none"></h1>
 				<!-- Icon Divider-->
-                <div class="divider-custom divider-light" id="masthead-divider">
+                <div class="divider-custom divider-light" id="masthead-divider" display="none">
                     <div class="divider-custom-line"></div>
                     <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Masthead Heading-->
 				<button type="button" class="btn btn-light btn-lg btn-block" id="start" disabled>COMMENCER LE TABATA</button>
-				<p class="btn text-danger" id="error">Le tabata ne peut actuellement par être activé. Cela est parce que vous n'avez pas encore sélectionné les exercices</p>
-				<a href="#" id="genrate_pdf" class="btn btn-info btn-lg disabled" tabindex="-1" role="button" aria-disabled="true" data-toggle="modal" data-target="#portfolioModal2"><i class="fa fa-file" aria-hidden="true"></i> GÉNÉRER UN PDF</a>
+				<p class="btn text-danger" id="errorStart">Le tabata ne peut actuellement par être activé. Cela est parce que vous n'avez pas encore sélectionné les exercices</p>
+				<a href="#" id="genrate_pdf" class="btn btn-info btn-lg disabled" tabindex="-1" role="button" aria-disabled="true" data-toggle="modal" data-target="#portfolioModal2" display="none"><i class="fa fa-file" aria-hidden="true"></i> GÉNÉRER UN PDF</a>
             </div>
         </header>
+		<div id="YoutubeMusic">
+
+		</div>
 
         <!-- Footer-->
         <footer class="footer text-center">
@@ -111,156 +114,156 @@
 											<form class="mb-5" id="exsForm">
 												<div class="form-row align-items-center">
 												<div class="col-auto my-1">
-												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 1</label>
+												  <label class="mr-sm-2" for="ex1">Activité 1</label>
 												  <select class="custom-select mr-sm-2" id="ex1">
 													<option selected disabled>Choisir</option>
-													<option value="1">Montée de genoux sur place</option>
-													<option value="2">Jumbing jack</option>
-													<option value="3">Squat</option>
-													<option value="4">Gainage facial sur les coude</option>
-													<option value="5">Gainage latéral sur un coude</option>
-													<option value="6">Gainage touche épaules</option>
-													<option value="7">Pompes</option>
-													<option value="8">Fentes avant</option>
-													<option value="9">Montain climber</option>
-													<option value="10">Dips</option>
-													<option value="11">Burpees</option>
-													<option value="12">Oblique medecine bal</option>
-													<option value="13">Relevé bassin</option>
+													<option value="monte_genou">Montée de genoux sur place</option>
+													<option value="jumping_jack">Jumping jack</option>
+													<option value="squat">Squat</option>
+													<option value="gainage_facial">Gainage facial sur les coude</option>
+													<option value="gainage_latéral">Gainage latéral sur un coude</option>
+													<option value="gainage_touche_epaule">Gainage touche épaules</option>
+													<option value="pompes">Pompes</option>
+													<option value="fentes_avant">Fentes avant</option>
+													<option value="mountain_climber">Mountain climber</option>
+													<option value="dips">Dips</option>
+													<option value="burpees">Burpees</option>
+													<option value="oblique_medecine_ball">Oblique medecine bal</option>
+													<option value="releve_bassin">Relevé bassin</option>
 												  </select>
 												</div>
 												<div class="col-auto my-1">
-												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 2</label>
+												  <label class="mr-sm-2" for="ex2">Activité 2</label>
 												  <select class="custom-select mr-sm-2" id="ex2">
-													<option selected disabled>Choisir</option>
-													<option value="1">Montée de genoux sur place</option>
-													<option value="2">Jumbing jack</option>
-													<option value="3">Squat</option>
-													<option value="4">Gainage facial sur les coude</option>
-													<option value="5">Gainage latéral sur un coude</option>
-													<option value="6">Gainage touche épaules</option>
-													<option value="7">Pompes</option>
-													<option value="8">Fentes avant</option>
-													<option value="9">Montain climber</option>
-													<option value="10">Dips</option>
-													<option value="11">Burpees</option>
-													<option value="12">Oblique medecine bal</option>
-													<option value="13">Relevé bassin</option>
+													  <option selected disabled>Choisir</option>
+													  <option value="monte_genou">Montée de genoux sur place</option>
+													  <option value="jumping_jack">Jumping jack</option>
+													  <option value="squat">Squat</option>
+													  <option value="gainage_facial">Gainage facial sur les coude</option>
+													  <option value="gainage_latéral">Gainage latéral sur un coude</option>
+													  <option value="gainage_touche_epaule">Gainage touche épaules</option>
+													  <option value="pompes">Pompes</option>
+													  <option value="fentes_avant">Fentes avant</option>
+													  <option value="mountain_climber">Mountain climber</option>
+													  <option value="dips">Dips</option>
+													  <option value="burpees">Burpees</option>
+													  <option value="oblique_medecine_ball">Oblique medecine bal</option>
+													  <option value="releve_bassin">Relevé bassin</option>
 												  </select>
 												</div>
 												<div class="col-auto my-1">
-												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 3</label>
+												  <label class="mr-sm-2" for="ex3">Activité 3</label>
 												  <select class="custom-select mr-sm-2" id="ex3">
-													<option selected disabled>Choisir</option>
-													<option value="1">Montée de genoux sur place</option>
-													<option value="2">Jumbing jack</option>
-													<option value="3">Squat</option>
-													<option value="4">Gainage facial sur les coude</option>
-													<option value="5">Gainage latéral sur un coude</option>
-													<option value="6">Gainage touche épaules</option>
-													<option value="7">Pompes</option>
-													<option value="8">Fentes avant</option>
-													<option value="9">Montain climber</option>
-													<option value="10">Dips</option>
-													<option value="11">Burpees</option>
-													<option value="12">Oblique medecine bal</option>
-													<option value="13">Relevé bassin</option>
+													  <option selected disabled>Choisir</option>
+													  <option value="monte_genou">Montée de genoux sur place</option>
+													  <option value="jumping_jack">Jumping jack</option>
+													  <option value="squat">Squat</option>
+													  <option value="gainage_facial">Gainage facial sur les coude</option>
+													  <option value="gainage_latéral">Gainage latéral sur un coude</option>
+													  <option value="gainage_touche_epaule">Gainage touche épaules</option>
+													  <option value="pompes">Pompes</option>
+													  <option value="fentes_avant">Fentes avant</option>
+													  <option value="mountain_climber">Mountain climber</option>
+													  <option value="dips">Dips</option>
+													  <option value="burpees">Burpees</option>
+													  <option value="oblique_medecine_ball">Oblique medecine bal</option>
+													  <option value="releve_bassin">Relevé bassin</option>
 												  </select>
 												</div>
 												<div class="col-auto my-1">
-												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 4</label>
+												  <label class="mr-sm-2" for="ex4">Activité 4</label>
 												  <select class="custom-select mr-sm-2" id="ex4">
-													<option selected disabled>Choisir</option>
-													<option value="1">Montée de genoux sur place</option>
-													<option value="2">Jumbing jack</option>
-													<option value="3">Squat</option>
-													<option value="4">Gainage facial sur les coude</option>
-													<option value="5">Gainage latéral sur un coude</option>
-													<option value="6">Gainage touche épaules</option>
-													<option value="7">Pompes</option>
-													<option value="8">Fentes avant</option>
-													<option value="9">Montain climber</option>
-													<option value="10">Dips</option>
-													<option value="11">Burpees</option>
-													<option value="12">Oblique medecine bal</option>
-													<option value="13">Relevé bassin</option>
+													  <option selected disabled>Choisir</option>
+													  <option value="monte_genou">Montée de genoux sur place</option>
+													  <option value="jumping_jack">Jumping jack</option>
+													  <option value="squat">Squat</option>
+													  <option value="gainage_facial">Gainage facial sur les coude</option>
+													  <option value="gainage_latéral">Gainage latéral sur un coude</option>
+													  <option value="gainage_touche_epaule">Gainage touche épaules</option>
+													  <option value="pompes">Pompes</option>
+													  <option value="fentes_avant">Fentes avant</option>
+													  <option value="mountain_climber">Mountain climber</option>
+													  <option value="dips">Dips</option>
+													  <option value="burpees">Burpees</option>
+													  <option value="oblique_medecine_ball">Oblique medecine bal</option>
+													  <option value="releve_bassin">Relevé bassin</option>
 												  </select>
 												</div>
 												
 												<div class="col-auto my-1">
-												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 5</label>
+												  <label class="mr-sm-2" for="ex5">Activité 5</label>
 												  <select class="custom-select mr-sm-2" id="ex5">
-													<option selected disabled>Choisir</option>
-													<option value="1">Montée de genoux sur place</option>
-													<option value="2">Jumbing jack</option>
-													<option value="3">Squat</option>
-													<option value="4">Gainage facial sur les coude</option>
-													<option value="5">Gainage latéral sur un coude</option>
-													<option value="6">Gainage touche épaules</option>
-													<option value="7">Pompes</option>
-													<option value="8">Fentes avant</option>
-													<option value="9">Montain climber</option>
-													<option value="10">Dips</option>
-													<option value="11">Burpees</option>
-													<option value="12">Oblique medecine bal</option>
-													<option value="13">Relevé bassin</option>
+													  <option selected disabled>Choisir</option>
+													  <option value="monte_genou">Montée de genoux sur place</option>
+													  <option value="jumping_jack">Jumping jack</option>
+													  <option value="squat">Squat</option>
+													  <option value="gainage_facial">Gainage facial sur les coude</option>
+													  <option value="gainage_latéral">Gainage latéral sur un coude</option>
+													  <option value="gainage_touche_epaule">Gainage touche épaules</option>
+													  <option value="pompes">Pompes</option>
+													  <option value="fentes_avant">Fentes avant</option>
+													  <option value="mountain_climber">Mountain climber</option>
+													  <option value="dips">Dips</option>
+													  <option value="burpees">Burpees</option>
+													  <option value="oblique_medecine_ball">Oblique medecine bal</option>
+													  <option value="releve_bassin">Relevé bassin</option>
 												  </select>
 												</div>
 												<div class="col-auto my-1">
-												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 6</label>
+												  <label class="mr-sm-2" for="ex6">Activité 6</label>
 												  <select class="custom-select mr-sm-2" id="ex6">
-													<option selected disabled>Choisir</option>
-													<option value="1">Montée de genoux sur place</option>
-													<option value="2">Jumbing jack</option>
-													<option value="3">Squat</option>
-													<option value="4">Gainage facial sur les coude</option>
-													<option value="5">Gainage latéral sur un coude</option>
-													<option value="6">Gainage touche épaules</option>
-													<option value="7">Pompes</option>
-													<option value="8">Fentes avant</option>
-													<option value="9">Montain climber</option>
-													<option value="10">Dips</option>
-													<option value="11">Burpees</option>
-													<option value="12">Oblique medecine bal</option>
-													<option value="13">Relevé bassin</option>
+													  <option selected disabled>Choisir</option>
+													  <option value="monte_genou">Montée de genoux sur place</option>
+													  <option value="jumping_jack">Jumping jack</option>
+													  <option value="squat">Squat</option>
+													  <option value="gainage_facial">Gainage facial sur les coude</option>
+													  <option value="gainage_latéral">Gainage latéral sur un coude</option>
+													  <option value="gainage_touche_epaule">Gainage touche épaules</option>
+													  <option value="pompes">Pompes</option>
+													  <option value="fentes_avant">Fentes avant</option>
+													  <option value="mountain_climber">Mountain climber</option>
+													  <option value="dips">Dips</option>
+													  <option value="burpees">Burpees</option>
+													  <option value="oblique_medecine_ball">Oblique medecine bal</option>
+													  <option value="releve_bassin">Relevé bassin</option>
 												  </select>
 												</div>
 												<div class="col-auto my-1">
-												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 7</label>
+												  <label class="mr-sm-2" for="ex7">Activité 7</label>
 												  <select class="custom-select mr-sm-2" id="ex7">
-													<option selected disabled>Choisir</option>
-													<option value="1">Montée de genoux sur place</option>
-													<option value="2">Jumbing jack</option>
-													<option value="3">Squat</option>
-													<option value="4">Gainage facial sur les coude</option>
-													<option value="5">Gainage latéral sur un coude</option>
-													<option value="6">Gainage touche épaules</option>
-													<option value="7">Pompes</option>
-													<option value="8">Fentes avant</option>
-													<option value="9">Montain climber</option>
-													<option value="10">Dips</option>
-													<option value="11">Burpees</option>
-													<option value="12">Oblique medecine bal</option>
-													<option value="13">Relevé bassin</option>
+													  <option selected disabled>Choisir</option>
+													  <option value="monte_genou">Montée de genoux sur place</option>
+													  <option value="jumping_jack">Jumping jack</option>
+													  <option value="squat">Squat</option>
+													  <option value="gainage_facial">Gainage facial sur les coude</option>
+													  <option value="gainage_latéral">Gainage latéral sur un coude</option>
+													  <option value="gainage_touche_epaule">Gainage touche épaules</option>
+													  <option value="pompes">Pompes</option>
+													  <option value="fentes_avant">Fentes avant</option>
+													  <option value="mountain_climber">Mountain climber</option>
+													  <option value="dips">Dips</option>
+													  <option value="burpees">Burpees</option>
+													  <option value="oblique_medecine_ball">Oblique medecine bal</option>
+													  <option value="releve_bassin">Relevé bassin</option>
 												  </select>
 												</div>
 												<div class="col-auto my-1">
-												  <label class="mr-sm-2" for="inlineFormCustomSelect">Activité 8</label>
+												  <label class="mr-sm-2" for="ex8">Activité 8</label>
 												  <select class="custom-select mr-sm-2" id="ex8">
-													<option selected disabled>Choisir</option>
-													<option value="1">Montée de genoux sur place</option>
-													<option value="2">Jumbing jack</option>
-													<option value="3">Squat</option>
-													<option value="4">Gainage facial sur les coude</option>
-													<option value="5">Gainage latéral sur un coude</option>
-													<option value="6">Gainage touche épaules</option>
-													<option value="7">Pompes</option>
-													<option value="8">Fentes avant</option>
-													<option value="9">Montain climber</option>
-													<option value="10">Dips</option>
-													<option value="11">Burpees</option>
-													<option value="12">Oblique medecine bal</option>
-													<option value="13">Relevé bassin</option>
+													  <option selected disabled>Choisir</option>
+													  <option value="monte_genou">Montée de genoux sur place</option>
+													  <option value="jumping_jack">Jumping jack</option>
+													  <option value="squat">Squat</option>
+													  <option value="gainage_facial">Gainage facial sur les coude</option>
+													  <option value="gainage_latéral">Gainage latéral sur un coude</option>
+													  <option value="gainage_touche_epaule">Gainage touche épaules</option>
+													  <option value="pompes">Pompes</option>
+													  <option value="fentes_avant">Fentes avant</option>
+													  <option value="mountain_climber">Mountain climber</option>
+													  <option value="dips">Dips</option>
+													  <option value="burpees">Burpees</option>
+													  <option value="oblique_medecine_ball">Oblique medecine bal</option>
+													  <option value="releve_bassin">Relevé bassin</option>
 												  </select>
 												</div>
 												</div>
@@ -271,7 +274,7 @@
 											<form class="mb-5" id="times">
 												<div class="form-row align-items-center">
 												<div class="col-auto my-1">
-												  <label class="mr-sm-2" for="inlineFormCustomSelect">Nombre de répétitions</label>
+												  <label class="mr-sm-2" for="repsNum">Nombre de répétitions</label>
 												  <select class="custom-select mr-sm-2" id="repsNum">
 													<option value="2">Deux</option>
 													<option value="3" selected>Trois</option>.
@@ -279,7 +282,7 @@
 												  </select>
 												</div>
 												<div class="col-auto my-1">
-												  <label class="mr-sm-2" for="inlineFormCustomSelect">Temps de récupération</label>
+												  <label class="mr-sm-2" for="RecupTime">Temps de récupération</label>
 												  <select class="custom-select mr-sm-2" id="RecupTime">
 													<option value="120">Deux minutes</option>
 													<option value="150">Deux minutes 30 secondes</option>
@@ -294,7 +297,7 @@
 											<form class="mb-5" id="Musicform">
 												<div class="form-row align-items-center">
 												<div class="col-auto my-1">
-												  <label class="mr-sm-2" for="inlineFormCustomSelect">Musique dans la base</label>
+												  <label class="mr-sm-2" for="music">Musique dans la base</label>
 												  <select class="custom-select mr-sm-2" id="music">
 													<option selected>Aucune</option>
 													<option value="sport_music_1">Musique pour le sport 1</option>
@@ -310,8 +313,10 @@
 												  </select>
 												</div>
 												<div class="form-group">
-													<label for="formGroupExampleInput">Musique customisé (lien Youtube)</label>
+													<label for="customMusic">Musique customisé (lien Youtube)</label>
 													<input type="text" class="form-control" id="customMusic" placeholder="https://youtu.be/jeg_TJvkSjg">
+													<p class="btn text-danger" id="errorCustom">Le lien Youtube n'est pas correct. La musique ne se déclanchera pas</p>
+
 												</div>
 												<div class="custom-control custom-checkbox">
 												  <input type="checkbox" class="custom-control-input" id="customCheck1" checked autocomplete>
@@ -350,9 +355,9 @@
 										<div class="divider-custom-icon"><i class="fas fa-star"></i></div>
 										<div class="divider-custom-line"></div>
 									</div>
-									<h3 class="mb-5">Quel est le ressenti que vous avez eu lors de cette scéance ?</h3>
 									<form>
 										<div class="form-group">
+											<h3 class="mb-5">Quel est le ressenti que vous avez eu lors de cette scéance ?</h3>
 											<textarea class="form-control" id="ressenti" rows="3"></textarea>
 										</div>
 									</form>

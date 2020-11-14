@@ -20,16 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="868d462d-c582-4f59-941c-c631a101c0c4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/sounds/Musics/sport_music_1.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/sounds/Musics/sport_music_10.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/sounds/Musics/sport_music_2.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/sounds/Musics/sport_music_3.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/sounds/Musics/sport_music_4.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/sounds/Musics/sport_music_5.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/sounds/Musics/sport_music_6.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/sounds/Musics/sport_music_7.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/sounds/Musics/sport_music_8.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/sounds/Musics/sport_music_9.mp3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/scripts.js" afterDir="false" />
@@ -75,7 +65,7 @@
       <updated>1605112274808</updated>
       <workItem from="1605112279848" duration="4996000" />
       <workItem from="1605212368841" duration="8070000" />
-      <workItem from="1605285638690" duration="11940000" />
+      <workItem from="1605285638690" duration="18750000" />
     </task>
     <servers />
   </component>

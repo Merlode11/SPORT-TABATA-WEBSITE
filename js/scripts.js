@@ -75,7 +75,7 @@ var ex = document.getElementById("exercice");
 var mhdiv = document.getElementById("masthead-divider");
 var startbtn = document.getElementById("start");
 var generate_pdf = document.getElementById("genrate_pdf");
-var error = document.getElementById("error")
+var errorStart = document.getElementById("errorStart")
 
 // Exercices
 const exsForm = document.getElementById("exsForm")
@@ -98,10 +98,13 @@ exsChoosed.push(ex6.options[ex6.selectedIndex].text)
 exsChoosed.push(ex7.options[ex7.selectedIndex].text)
 exsChoosed.push(ex8.options[ex8.selectedIndex].text)
 
-// Music
+// Sounds
 const musicForm = document.getElementById("Musicform")
 const Custom = document.getElementById("customMusic")
+var errorCustom = document.getElementById("errorCustom")
 const Music = document.getElementById("music")
+const Voix_OFF = document.getElementById("customCheck1")
+var YoutubeMusic = document.getElementById("YoutubeMusic")
 
 const times = document.getElementById("times")
 const repsNum = document.getElementById("repsNum")
@@ -133,6 +136,21 @@ const ressenti = document.getElementById("ressenti")
 //   }
 // }, 1000);
 
+/* On Page load */
+ex.style.display = "none";
+chrono.style.display = "none";
+mhdiv.style.display = "none";
+generate_pdf.style.display = "none";
+startbtn.style.display = "block";
+
+if (exsChoosed.includes("Choisir")) {
+    startbtn.disabled = true
+    errorStart.style.display ="block"
+} else {
+    startbtn.disabled = false
+    errorStart.style.display ="none"
+}
+
 /* Events */
 
 // On Click en startbtn
@@ -140,6 +158,8 @@ startbtn.onclick = function(){
     chrono.classList.remove("text-danger")
     chrono.style.display = "block";
 	mhdiv.style.display = "flex";
+    startbtn.style.display = "none";
+    YoutubeMusic.innerHTML = '<audio id="youtube" autoplay></audio>'
 
     chrono.innerHTML = "PRÊT ?"
     Start_Music ()
@@ -166,56 +186,56 @@ exsForm.onchange = function(){
 
     if (exsChoosed.includes("Choisir")) {
         startbtn.disabled = true
-        error.style.display ="block"
+        errorStart.style.display ="block"
     } else {
         startbtn.disabled = false
-        error.style.display ="none"
+        errorStart.style.display ="none"
     }
 }
-// selectedEx1 = ex1.options[ex1.selectedIndex].text
-
-ex.style.display = "none";
-chrono.style.display = "none";
-mhdiv.style.display = "none";
-generate_pdf.style.display = "none";
-
-if (exsChoosed.includes("Choisir")) {
-    startbtn.disabled = true
-    error.style.display ="block"
-} else {
-    startbtn.disabled = false
-    error.style.display ="none"
+Custom.onchange = function () {
+    var url = Custom.value
+    var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match) {
+        errorCustom.style.display ="block"
+    } else {
+        errorCustom.style.display ="none"
+    }
 }
+
+// selectedEx1 = ex1.options[ex1.selectedIndex].text
 
 function tabata () {
     exsChoosed.forEach(e => {
         ex.innerHTML = e
-            startTimer(20, 20).then(() => {
-                console.log(`REPOS`)
-                ex.innerHTML = 'REPOS'
-                startTimer(10, 10)
-            })
-        })
+        startTimer(20, 20, 'STOP')
+        setTimeout(function(){
+            chrono.classList.remove("text-danger")
+            ex.innerHTML = 'REPOS'
+            startTimer(10, 10, 'GO')
+        }, 20000)
+        console.log(next)
+    })
 }
 
-
-function startTimer(TIME_LIMIT, timeLeft) {
-    let timePassed = 0;
-    chrono.classList.remove("text-danger")
-    const timerInterval = setInterval(() => {
-        timePassed = timePassed += 1;
-        timeLeft = TIME_LIMIT - timePassed;
-        chrono.innerHTML = formatTime(timeLeft);
-        if (timeLeft === 3 ) {
-            const audio = new Audio('https://raw.githubusercontent.com/Merlode11/SPORT-TABATA-WEBSITE/main/assets/sounds/Exercices/STOP.mp3');
-            audio.play();
-        }
-        if (timeLeft <= 0) {
+// State = text at end
+function startTimer(TIME_LIMIT, timeLeft, state, next) {
+        let timePassed = 0;
+        chrono.classList.remove("text-danger")
+        const timerInterval = setInterval(() => {
+            timePassed = timePassed += 1;
+            timeLeft = TIME_LIMIT - timePassed;
+            chrono.innerHTML = formatTime(timeLeft);
+            if (timeLeft === 3 && Voix_OFF.checked) {
+                const audio = new Audio(`https://raw.githubusercontent.com/Merlode11/SPORT-TABATA-WEBSITE/main/assets/sounds/Exercices/${state}.mp3`);
+                audio.play();
+            }
+            if (timeLeft <= 0) {
                 clearInterval(timerInterval);
-                chrono.innerHTML = "STOP";
                 chrono.classList.add("text-danger");
-        }
-    }, 1000);
+                chrono.innerHTML = state;
+            }
+        }, 1000);
 }
 
 function formatTime(time) {
@@ -234,13 +254,8 @@ function Start_Music () {
         var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
         var match = url.match(regExp);
         if (match && match[2].length == 11) {
-            return match[2];
-        } else {
-            //error
+            var videoID = match[2];
         }
-
-        // YouTube video ID
-        var videoID = "CMNry4PE93Y";
 
         // Fetch video info (using a proxy if avoid CORS errors)
 
