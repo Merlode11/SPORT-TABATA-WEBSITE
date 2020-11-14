@@ -98,6 +98,11 @@ exsChoosed.push(ex6.options[ex6.selectedIndex].text)
 exsChoosed.push(ex7.options[ex7.selectedIndex].text)
 exsChoosed.push(ex8.options[ex8.selectedIndex].text)
 
+// Music
+const musicForm = document.getElementById("Musicform")
+const Custom = document.getElementById("customMusic")
+const Music = document.getElementById("music")
+
 const times = document.getElementById("times")
 const repsNum = document.getElementById("repsNum")
 const RecupTime = document.getElementById("RecupTime")
@@ -136,14 +141,14 @@ startbtn.onclick = function(){
     chrono.style.display = "block";
 	mhdiv.style.display = "flex";
 
-    setTimeout(function(){ chrono.innerHTML = "PRÊT ?" }, 1000);
+    chrono.innerHTML = "PRÊT ?"
+    Start_Music ()
     setTimeout(function(){ chrono.innerHTML = "FEU" }, 2000);
     setTimeout(function(){ chrono.innerHTML = "GO !" }, 3000);
     setTimeout(function(){
         ex.style.display = "block";
         tabata()
     }, 4000);
-
 }
 
 // On form change
@@ -185,9 +190,11 @@ if (exsChoosed.includes("Choisir")) {
 function tabata () {
     exsChoosed.forEach(e => {
         ex.innerHTML = e
-            const TIME_LIMIT = 20;
-            let timeLeft = TIME_LIMIT;
-            startTimer(TIME_LIMIT, timeLeft)
+            startTimer(20, 20).then(() => {
+                console.log(`REPOS`)
+                ex.innerHTML = 'REPOS'
+                startTimer(10, 10)
+            })
         })
 }
 
@@ -197,19 +204,16 @@ function startTimer(TIME_LIMIT, timeLeft) {
     chrono.classList.remove("text-danger")
     const timerInterval = setInterval(() => {
         timePassed = timePassed += 1;
-        console.log(timePassed)
         timeLeft = TIME_LIMIT - timePassed;
-        console.log(timeLeft)
         chrono.innerHTML = formatTime(timeLeft);
-        console.log(formatTime(timeLeft))
-        if (timeLeft <= 3) {
-            const audio = new Audio('/assets/sounds/STOP.mp3');
+        if (timeLeft === 3 ) {
+            const audio = new Audio('https://raw.githubusercontent.com/Merlode11/SPORT-TABATA-WEBSITE/main/assets/sounds/Exercices/STOP.mp3');
             audio.play();
-            setTimeout(function () {
+        }
+        if (timeLeft <= 0) {
                 clearInterval(timerInterval);
                 chrono.innerHTML = "STOP";
-                chrono.classList.add("text-danger")
-            }, 3000);
+                chrono.classList.add("text-danger");
         }
     }, 1000);
 }
@@ -221,6 +225,58 @@ function formatTime(time) {
     if (seconds < 10) {
         seconds = `0${seconds}`;
     }
-
     return `${minutes}:${seconds}`;
+}
+function Start_Music () {
+
+    if (Custom.value && Music.options[Music.selectedIndex].text !== 'Aucune') {
+        const url = Custom.value
+        var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var match = url.match(regExp);
+        if (match && match[2].length == 11) {
+            return match[2];
+        } else {
+            //error
+        }
+
+        // YouTube video ID
+        var videoID = "CMNry4PE93Y";
+
+        // Fetch video info (using a proxy if avoid CORS errors)
+
+        fetch('https://cors-anywhere.herokuapp.com/' + "https://www.youtube.com/get_video_info?video_id=" + videoID).then(response => {
+
+            if (response.ok) {
+                response.text().then(ytData => {
+
+                    // parse response to find audio info
+                    var ytData = parse_str(ytData);
+                    var getAdaptiveFormats = JSON.parse(ytData.player_response).streamingData.adaptiveFormats;
+                    var findAudioInfo = getAdaptiveFormats.findIndex(obj => obj.audioQuality);
+
+                    // get the URL for the audio file
+                    var audioURL = getAdaptiveFormats[findAudioInfo].url;
+
+                    // update the <audio> element src
+                    var youtubeAudio = document.getElementById('youtube');
+                    youtubeAudio.src = audioURL;
+
+                });
+            }
+        });
+
+
+        function parse_str(str) {
+            return str.split('&').reduce(function (params, param) {
+                var paramSplit = param.split('=').map(function (value) {
+                    return decodeURIComponent(value.replace('+', ' '));
+                });
+                params[paramSplit[0]] = paramSplit[1];
+                return params;
+            }, {});
+        }
+    } else {
+        const audio = new Audio(`https://raw.githubusercontent.com/Merlode11/SPORT-TABATA-WEBSITE/main/assets/sounds/Musics/${Music.options[Music.selectedIndex].value}.mp3`);
+        audio.play();
+    }
 }
