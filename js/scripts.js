@@ -89,14 +89,25 @@ const ex7 = document.getElementById("ex7")
 const ex8 = document.getElementById("ex8")
 
 let exsChoosed = []
-exsChoosed.push(ex1.options[ex1.selectedIndex])
-exsChoosed.push(ex2.options[ex2.selectedIndex])
-exsChoosed.push(ex3.options[ex3.selectedIndex])
-exsChoosed.push(ex4.options[ex4.selectedIndex])
-exsChoosed.push(ex5.options[ex5.selectedIndex])
-exsChoosed.push(ex6.options[ex6.selectedIndex])
-exsChoosed.push(ex7.options[ex7.selectedIndex])
-exsChoosed.push(ex8.options[ex8.selectedIndex])
+exsChoosed.push(ex1.options[ex1.selectedIndex].text)
+exsChoosed.push(ex2.options[ex2.selectedIndex].text)
+exsChoosed.push(ex3.options[ex3.selectedIndex].text)
+exsChoosed.push(ex4.options[ex4.selectedIndex].text)
+exsChoosed.push(ex5.options[ex5.selectedIndex].text)
+exsChoosed.push(ex6.options[ex6.selectedIndex].text)
+exsChoosed.push(ex7.options[ex7.selectedIndex].text)
+exsChoosed.push(ex8.options[ex8.selectedIndex].text)
+
+let exsChoosedValue = []
+exsChoosed.push(ex1.value)
+exsChoosed.push(ex2.value)
+exsChoosed.push(ex3.value)
+exsChoosed.push(ex4.value)
+exsChoosed.push(ex5.value)
+exsChoosed.push(ex6.value)
+exsChoosed.push(ex7.value)
+exsChoosed.push(ex8.value)
+
 
 // Sounds
 const musicForm = document.getElementById("Musicform")
@@ -111,7 +122,7 @@ const repsNum = document.getElementById("repsNum")
 const RecupTime = document.getElementById("RecupTime")
 
 const ressenti = document.getElementById("ressenti")
-
+let exNum = 0
 
 /* On Page load */
 ex.style.display = "none";
@@ -135,6 +146,7 @@ startbtn.onclick = function(){
     chrono.classList.remove("text-danger")
     chrono.style.display = "block";
 	mhdiv.style.display = "flex";
+    generate_pdf.style.display = "none";
     startbtn.style.display = "none";
     YoutubeMusic.innerHTML = '<audio id="youtube" autoplay></audio>'
 
@@ -143,17 +155,19 @@ startbtn.onclick = function(){
     setTimeout(function(){ chrono.innerHTML = "GO !" }, 3000);
     setTimeout(function(){
         ex.style.display = "block";
+        console.log(`Tabata 1 start`)
         tabata()
     }, 4000);
     setTimeout(function(){
          console.log(`Repos Start`)
         ex.innerHTML = 'LONG REPOS'
         startTimer(RecupTime.value, RecupTime.value, 'GO')
+        exNum = 0
     }, 240000);
-    console.log(repsNum.value)
     setTimeout(function(){
+        console.log(`Tabata 2 start`)
         tabata()
-    }, 240000 + RecupTime.value);
+    }, 240000 + parseInt(RecupTime.value) * 1000);
 
     if (repsNum.value >= 3) {
         setTimeout(function(){
@@ -161,33 +175,66 @@ startbtn.onclick = function(){
             startTimer(RecupTime.value, RecupTime.value, 'GO')
         }, 240000 * 2 + RecupTime.value * 2);
         setTimeout(function(){
+            console.log(`Tabata 3 start`)
             tabata()
-        }, 240000 * 2 + RecupTime.value * 3);
+        }, 240000 * 2 + parseInt(RecupTime.value) * 1000 * 3);
+    } else {
+        setTimeout(function(){
+            chrono.innerHTML = "FIN DU TABATA"
+            ex.style.display = "none";
+            generate_pdf.style.display = "block";
+            startbtn.style.display = "block";
+        }, 240000 * 2 + RecupTime.value * 2);
     }
-    if (repsNum.value >= 4) {
+    
+    if (repsNum.value === 4) {
         setTimeout(function(){
             ex.innerHTML = 'LONG REPOS'
             startTimer(RecupTime.value, RecupTime.value, 'GO')
-        }, 240000 * 3 + RecupTime.value * 3);
+        }, 240000 * 3 + parseInt(RecupTime.value) * 1000 * 3);
         setTimeout(function(){
+            console.log(`Tabata 4 start`)
             tabata()
-        }, 240000 * 3 + RecupTime.value * 4);
+        }, 240000 * 3 + parseInt(RecupTime.value) * 1000 * 4);
+        setTimeout(function(){
+                chrono.innerHTML = "FIN DU TABATA"
+                ex.style.display = "none";
+                generate_pdf.style.display = "block";
+                startbtn.style.display = "block";
+        }, 240000 * 4 + parseInt(RecupTime.value) * 1000 * 4);
+    } else {
+        setTimeout(function(){
+            chrono.innerHTML = "FIN DU TABATA"
+            ex.style.display = "none";
+            generate_pdf.style.display = "block";
+            startbtn.style.display = "block";
+        }, 240000 * 3 + parseInt(RecupTime.value) * 1000 * 3);
     }
 
 }
 
 // On form change
 exsForm.onchange = function(){
-	// Array
+    console.log(ex1)
 	exsChoosed = []
-	exsChoosed.push(ex1.options[ex1.selectedIndex])
-	exsChoosed.push(ex2.options[ex2.selectedIndex])
-	exsChoosed.push(ex3.options[ex3.selectedIndex])
-	exsChoosed.push(ex4.options[ex4.selectedIndex])
-	exsChoosed.push(ex5.options[ex5.selectedIndex])
-	exsChoosed.push(ex6.options[ex6.selectedIndex])
-	exsChoosed.push(ex7.options[ex7.selectedIndex])
-	exsChoosed.push(ex8.options[ex8.selectedIndex])
+	exsChoosed.push(ex1.options[ex1.selectedIndex].text)
+	exsChoosed.push(ex2.options[ex2.selectedIndex].text)
+	exsChoosed.push(ex3.options[ex3.selectedIndex].text)
+	exsChoosed.push(ex4.options[ex4.selectedIndex].text)
+	exsChoosed.push(ex5.options[ex5.selectedIndex].text)
+	exsChoosed.push(ex6.options[ex6.selectedIndex].text)
+	exsChoosed.push(ex7.options[ex7.selectedIndex].text)
+	exsChoosed.push(ex8.options[ex8.selectedIndex].text)
+
+    exsChoosedValue = []
+    exsChoosed.push(ex1.value)
+    exsChoosed.push(ex2.value)
+    exsChoosed.push(ex3.value)
+    exsChoosed.push(ex4.value)
+    exsChoosed.push(ex5.value)
+    exsChoosed.push(ex6.value)
+    exsChoosed.push(ex7.value)
+    exsChoosed.push(ex8.value)
 
     if (exsChoosed.includes("Choisir")) {
         startbtn.disabled = true
@@ -202,18 +249,16 @@ Custom.onchange = function () {
     var url = Custom.value
     var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     var match = url.match(regExp);
-    if (!match) {
+    if (!match && Music.text === 'Aucune') {
         errorCustom.style.display ="block"
     } else {
         errorCustom.style.display ="none"
     }
 }
 
-// selectedEx1 = ex1.options[ex1.selectedIndex].text
-
 /* Functions */
-let exNum = 0
 function tabata () {
+    exNum = 0
     Start_Music()
     next(exNum)
     setTimeout(function(){
@@ -240,7 +285,7 @@ function tabata () {
 }
 
 function next(n) {
-    ex.innerHTML = "EX" + (n +1) + " : " + exsChoosed[n].text
+    ex.innerHTML = "EX" + (n +1) + " : " + exsChoosed[n]
     startTimer(20, 20, 'STOP')
 
     if (n !== 7) setTimeout(function(){
@@ -251,15 +296,16 @@ function next(n) {
 }
 
 // State = text at end
-function startTimer(TIME_LIMIT, timeLeft, state, next) {
+function startTimer(TIME_LIMIT, timeLeft, state) {
+    console.log(`Countdown started : Time left ${TIME_LIMIT} state : ${state} exNum : ${exNum}`)
         let timePassed = 0;
-        chrono.classList.remove("text-danger")
         const timerInterval = setInterval(() => {
             timePassed = timePassed += 1;
             timeLeft = TIME_LIMIT - timePassed;
             chrono.innerHTML = formatTime(timeLeft);
             if (timeLeft === 5 && Voix_OFF.checked && state === 'GO') {
-                const audio = new Audio(`https://raw.githubusercontent.com/Merlode11/SPORT-TABATA-WEBSITE/main/assets/sounds/Exercices/${exsChoosed[exNum].value}.mp3`);
+                console.log(`Must Play the exercice news`)
+                const audio = new Audio(`https://raw.githubusercontent.com/Merlode11/SPORT-TABATA-WEBSITE/main/assets/sounds/Exercices/${exsChoosedValue[exNum]}.mp3`);
                 audio.play();
             }
             if (timeLeft === 3 && Voix_OFF.checked) {
@@ -284,7 +330,7 @@ function formatTime(time) {
 }
 
 function Start_Music () {
-    if (Custom.value && Music.options[Music.selectedIndex].text !== 'Aucune') {
+    if (Custom.value && Music.text !== 'Aucune') {
         let videoID = null;
         const url = Custom.value
         var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
