@@ -26,7 +26,9 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="868d462d-c582-4f59-941c-c631a101c0c4" name="Default Changelist" comment="" />
+    <list default="true" id="868d462d-c582-4f59-941c-c631a101c0c4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/result.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +71,7 @@
       <workItem from="1605112279848" duration="4996000" />
       <workItem from="1605212368841" duration="8070000" />
       <workItem from="1605285638690" duration="41990000" />
-      <workItem from="1605710851235" duration="16813000" />
+      <workItem from="1605710851235" duration="16973000" />
     </task>
     <task id="LOCAL-00001" summary="End website">
       <created>1605790040107</created>
@@ -92,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605791207885</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Correct the PDF generate bug">
+      <created>1605791556768</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605791556769</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,7 +135,8 @@
     <MESSAGE value="End website" />
     <MESSAGE value="Remove the console.logs and correct some bugs" />
     <MESSAGE value="Remove the jspdf. Not util" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove the jspdf. Not util" />
+    <MESSAGE value="Correct the PDF generate bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="Correct the PDF generate bug" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-883" y="-39" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605290178887">
