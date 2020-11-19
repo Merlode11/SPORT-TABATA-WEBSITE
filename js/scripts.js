@@ -19,7 +19,7 @@
         }
       }
     });
-  
+
     // Scroll to top button appear
     $(document).scroll(function() {
       var scrollDistance = $(this).scrollTop();
@@ -99,14 +99,25 @@ exsChoosed.push(ex7.options[ex7.selectedIndex].text)
 exsChoosed.push(ex8.options[ex8.selectedIndex].text)
 
 let exsChoosedValue = []
-exsChoosed.push(ex1.value)
-exsChoosed.push(ex2.value)
-exsChoosed.push(ex3.value)
-exsChoosed.push(ex4.value)
-exsChoosed.push(ex5.value)
-exsChoosed.push(ex6.value)
-exsChoosed.push(ex7.value)
-exsChoosed.push(ex8.value)
+exsChoosedValue.push(ex1.options[ex1.selectedIndex].value)
+exsChoosedValue.push(ex2.options[ex2.selectedIndex].value)
+exsChoosedValue.push(ex3.options[ex3.selectedIndex].value)
+exsChoosedValue.push(ex4.options[ex4.selectedIndex].value)
+exsChoosedValue.push(ex5.options[ex5.selectedIndex].value)
+exsChoosedValue.push(ex6.options[ex6.selectedIndex].value)
+exsChoosedValue.push(ex7.options[ex7.selectedIndex].value)
+exsChoosedValue.push(ex8.options[ex8.selectedIndex].value)
+
+//saving the values in local storage
+localStorage.setItem("ex1", ex1.options[ex1.selectedIndex].text);
+localStorage.setItem("ex2", ex2.options[ex2.selectedIndex].text);
+localStorage.setItem("ex3", ex3.options[ex3.selectedIndex].text);
+localStorage.setItem("ex4", ex4.options[ex4.selectedIndex].text);
+localStorage.setItem("ex5", ex5.options[ex5.selectedIndex].text);
+localStorage.setItem("ex6", ex6.options[ex6.selectedIndex].text);
+localStorage.setItem("ex7", ex7.options[ex7.selectedIndex].text);
+localStorage.setItem("ex8", ex8.options[ex8.selectedIndex].text);
+
 
 
 // Sounds
@@ -122,6 +133,11 @@ const repsNum = document.getElementById("repsNum")
 const RecupTime = document.getElementById("RecupTime")
 
 const ressenti = document.getElementById("ressenti")
+const generatePDF = document.getElementById("generatePDF")
+
+localStorage.setItem("ressenti", ressenti.value);
+localStorage.setItem("repsNum", repsNum.options[repsNum.selectedIndex].text);
+localStorage.setItem("RecupTime", RecupTime.options[RecupTime.selectedIndex].text);
 let exNum = 0
 
 /* On Page load */
@@ -169,7 +185,7 @@ startbtn.onclick = function(){
         tabata()
     }, 240000 + parseInt(RecupTime.value) * 1000);
 
-    if (repsNum.value >= 3) {
+    if (parseInt(repsNum.value) >= 3) {
         setTimeout(function(){
             ex.innerHTML = 'LONG REPOS'
             startTimer(RecupTime.value, RecupTime.value, 'GO')
@@ -187,7 +203,7 @@ startbtn.onclick = function(){
         }, 240000 * 2 + RecupTime.value * 2);
     }
     
-    if (repsNum.value === 4) {
+    if (parseInt(repsNum.value) === 4) {
         setTimeout(function(){
             ex.innerHTML = 'LONG REPOS'
             startTimer(RecupTime.value, RecupTime.value, 'GO')
@@ -213,9 +229,13 @@ startbtn.onclick = function(){
 
 }
 
+generatePDF.onclick = function () {
+    window.open(
+        `https://dhtml2pdf.herokuapp.com/api.php?url=${document.location.origin}result.html&result_type=show`, "_blank");
+}
+
 // On form change
 exsForm.onchange = function(){
-    console.log(ex1)
 	exsChoosed = []
 	exsChoosed.push(ex1.options[ex1.selectedIndex].text)
 	exsChoosed.push(ex2.options[ex2.selectedIndex].text)
@@ -227,14 +247,23 @@ exsForm.onchange = function(){
 	exsChoosed.push(ex8.options[ex8.selectedIndex].text)
 
     exsChoosedValue = []
-    exsChoosed.push(ex1.value)
-    exsChoosed.push(ex2.value)
-    exsChoosed.push(ex3.value)
-    exsChoosed.push(ex4.value)
-    exsChoosed.push(ex5.value)
-    exsChoosed.push(ex6.value)
-    exsChoosed.push(ex7.value)
-    exsChoosed.push(ex8.value)
+    exsChoosedValue.push(ex1.options[ex1.selectedIndex].value)
+    exsChoosedValue.push(ex2.options[ex2.selectedIndex].value)
+    exsChoosedValue.push(ex3.options[ex3.selectedIndex].value)
+    exsChoosedValue.push(ex4.options[ex4.selectedIndex].value)
+    exsChoosedValue.push(ex5.options[ex5.selectedIndex].value)
+    exsChoosedValue.push(ex6.options[ex6.selectedIndex].value)
+    exsChoosedValue.push(ex7.options[ex7.selectedIndex].value)
+    exsChoosedValue.push(ex8.options[ex8.selectedIndex].value)
+
+    localStorage.setItem("ex1", ex1.options[ex1.selectedIndex].text);
+    localStorage.setItem("ex2", ex2.options[ex2.selectedIndex].text);
+    localStorage.setItem("ex3", ex3.options[ex3.selectedIndex].text);
+    localStorage.setItem("ex4", ex4.options[ex4.selectedIndex].text);
+    localStorage.setItem("ex5", ex5.options[ex5.selectedIndex].text);
+    localStorage.setItem("ex6", ex6.options[ex6.selectedIndex].text);
+    localStorage.setItem("ex7", ex7.options[ex7.selectedIndex].text);
+    localStorage.setItem("ex8", ex8.options[ex8.selectedIndex].text);
 
     if (exsChoosed.includes("Choisir")) {
         startbtn.disabled = true
@@ -254,6 +283,23 @@ Custom.onchange = function () {
     } else {
         errorCustom.style.display ="none"
     }
+}
+
+ressenti.onchange = function () {
+    localStorage.setItem("ressenti", ressenti.value);
+    if (!ressenti.value) {
+        generatePDF.disabled = true
+    } else {
+        generatePDF.disabled = false
+    }
+}
+repsNum.onchange = function () {
+    localStorage.setItem("repsNum", repsNum.options[repsNum.selectedIndex].text);
+
+}
+
+RecupTime.onchange = function () {
+    localStorage.setItem("RecupTime", RecupTime.options[RecupTime.selectedIndex].text);
 }
 
 /* Functions */

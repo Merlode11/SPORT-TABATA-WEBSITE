@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Résultats de votre scéance</title>
+    <style>
+        .d-inline {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <meta http-equiv="refresh" content="0; URL=/404.html">
+</head>
+
+<body>
+
+<script>
+    const ex1 = localStorage.getItem("ex1")
+    const ex2 = localStorage.getItem("ex2")
+    const ex3 = localStorage.getItem("ex3")
+    const ex4 = localStorage.getItem("ex4")
+    const ex5 = localStorage.getItem("ex5")
+    const ex6 = localStorage.getItem("ex6")
+    const ex7 = localStorage.getItem("ex7")
+    const ex8 = localStorage.getItem("ex8")
+
+    const ressenti = localStorage.getItem("ressenti")
+    const repsNum = localStorage.getItem("repsNum")
+    const RecupTime = localStorage.getItem("RecupTime")
+</script>
+
+    <div class="d-inline">
+        <h1>TABATA CONFIG</h1>
+        <img src="assets/img/icon.png" width="80" height="80" alt="Tabata config Logo">
+        <h1><a href="http://tabata-config.tech">tabata-config.tech</a></h1>
+    </div>
+    <hr>
+    <table>
+        <thead>
+        <tr>
+            <th>Numéro de l'exercice</th>
+            <th>Exercice</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Exercice 1</td>
+            <td id="ex1">Non trouvé</td>
+        </tr>
+        <tr>
+            <td>Exercice 2</td>
+            <td id="ex2">Non trouvé</td>
+        </tr>
+        <tr>
+            <td>Exercice 3</td>
+            <td id="ex3">Non trouvé</td>
+        </tr>
+        <tr>
+            <td>Exercice 4</td>
+            <td id="ex4">Non trouvé</td>
+        </tr>
+        <tr>
+            <td>Exercice 5</td>
+            <td id="ex5">Non trouvé</td>
+        </tr>
+        <tr>
+            <td>Exercice 6</td>
+            <td id="ex6">Non trouvé</td>
+        </tr>
+        <tr>
+            <td>Exercice 7</td>
+            <td id="ex7">Non trouvé</td>
+        </tr>
+        <tr>
+            <td>Exercice 8</td>
+            <td id="ex8">Non trouvé</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h4>Nombre de répétition du tabata : <b><span id="repsNum">Non trouvé</span></b></h4>
+    <h4>Temps de repos entre les tabata : <b><span id="RecupTime">Non trouvé</span></b></h4>
+    <p> </p>
+    <h4>Ressenti de la scéance :</h4>
+    <p id="ressenti">Non trouvé</p>
+
+
+<script>
+    document.getElementById("ex1").textContent= ex1
+    document.getElementById("ex2").textContent= ex2
+    document.getElementById("ex3").textContent= ex3
+    document.getElementById("ex4").textContent= ex4
+    document.getElementById("ex5").textContent= ex5
+    document.getElementById("ex6").textContent= ex6
+    document.getElementById("ex7").textContent= ex7
+    document.getElementById("ex8").textContent= ex8
+
+    document.getElementById("repsNum").innerHTML= repsNum
+    document.getElementById("RecupTime").innerHTML= RecupTime
+    document.getElementById("ressenti").innerHTML = ressenti
+</script>
+
+</body>
+</html>
