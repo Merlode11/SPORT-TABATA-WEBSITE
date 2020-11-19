@@ -69,7 +69,7 @@
       <workItem from="1605112279848" duration="4996000" />
       <workItem from="1605212368841" duration="8070000" />
       <workItem from="1605285638690" duration="41990000" />
-      <workItem from="1605710851235" duration="16113000" />
+      <workItem from="1605710851235" duration="16813000" />
     </task>
     <task id="LOCAL-00001" summary="End website">
       <created>1605790040107</created>
@@ -85,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605790702661</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Remove the jspdf. Not util">
+      <created>1605791207883</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605791207885</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,7 +125,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="End website" />
     <MESSAGE value="Remove the console.logs and correct some bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remove the console.logs and correct some bugs" />
+    <MESSAGE value="Remove the jspdf. Not util" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove the jspdf. Not util" />
   </component>
   <component name="WindowStateProjectService">
     <state x="-883" y="-39" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605290178887">

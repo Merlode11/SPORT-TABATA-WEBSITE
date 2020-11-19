@@ -226,7 +226,7 @@ startbtn.onclick = function(){
 
 generatePDF.onclick = function () {
     window.open(
-        `https://dhtml2pdf.herokuapp.com/api.php?url=${document.location.origin}result.html&result_type=show`, "_blank");
+        `https://dhtml2pdf.herokuapp.com/api.php?url=${document.location.origin}/result.html&result_type=show`, "_blank");
 }
 
 // On form change
