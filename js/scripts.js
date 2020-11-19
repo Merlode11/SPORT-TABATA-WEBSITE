@@ -171,17 +171,14 @@ startbtn.onclick = function(){
     setTimeout(function(){ chrono.innerHTML = "GO !" }, 3000);
     setTimeout(function(){
         ex.style.display = "block";
-        console.log(`Tabata 1 start`)
         tabata()
     }, 4000);
     setTimeout(function(){
-         console.log(`Repos Start`)
         ex.innerHTML = 'LONG REPOS'
         startTimer(RecupTime.value, RecupTime.value, 'GO')
         exNum = 0
     }, 240000);
     setTimeout(function(){
-        console.log(`Tabata 2 start`)
         tabata()
     }, 240000 + parseInt(RecupTime.value) * 1000);
 
@@ -189,9 +186,8 @@ startbtn.onclick = function(){
         setTimeout(function(){
             ex.innerHTML = 'LONG REPOS'
             startTimer(RecupTime.value, RecupTime.value, 'GO')
-        }, 240000 * 2 + RecupTime.value * 2);
+        }, 240000 * 2 + parseInt(RecupTime.value) * 2);
         setTimeout(function(){
-            console.log(`Tabata 3 start`)
             tabata()
         }, 240000 * 2 + parseInt(RecupTime.value) * 1000 * 3);
     } else {
@@ -200,7 +196,7 @@ startbtn.onclick = function(){
             ex.style.display = "none";
             generate_pdf.style.display = "block";
             startbtn.style.display = "block";
-        }, 240000 * 2 + RecupTime.value * 2);
+        }, 240000 * 2 + parseInt(RecupTime.value) * 2);
     }
     
     if (parseInt(repsNum.value) === 4) {
@@ -209,7 +205,6 @@ startbtn.onclick = function(){
             startTimer(RecupTime.value, RecupTime.value, 'GO')
         }, 240000 * 3 + parseInt(RecupTime.value) * 1000 * 3);
         setTimeout(function(){
-            console.log(`Tabata 4 start`)
             tabata()
         }, 240000 * 3 + parseInt(RecupTime.value) * 1000 * 4);
         setTimeout(function(){
@@ -274,7 +269,6 @@ exsForm.onchange = function(){
     }
 }
 Custom.onchange = function () {
-    console.log("Music custom updated")
     var url = Custom.value
     var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     var match = url.match(regExp);
@@ -343,14 +337,12 @@ function next(n) {
 
 // State = text at end
 function startTimer(TIME_LIMIT, timeLeft, state) {
-    console.log(`Countdown started : Time left ${TIME_LIMIT} state : ${state} exNum : ${exNum}`)
         let timePassed = 0;
         const timerInterval = setInterval(() => {
             timePassed = timePassed += 1;
             timeLeft = TIME_LIMIT - timePassed;
             chrono.innerHTML = formatTime(timeLeft);
             if (timeLeft === 5 && Voix_OFF.checked && state === 'GO') {
-                console.log(`Must Play the exercice news`)
                 const audio = new Audio(`https://raw.githubusercontent.com/Merlode11/SPORT-TABATA-WEBSITE/main/assets/sounds/Exercices/${exsChoosedValue[exNum]}.mp3`);
                 audio.play();
             }
