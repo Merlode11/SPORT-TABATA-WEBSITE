@@ -159,6 +159,11 @@ if (exsChoosed.includes("Choisir")) {
 
 // On Click en startbtn
 startbtn.onclick = function(){
+if (exsChoosed.includes("Choisir")) {
+    startbtn.disabled = true
+    errorStart.style.display ="block"
+	retrun alert("Vous n'avez pas configuré votre tabata !")
+}
     chrono.classList.remove("text-danger")
     chrono.style.display = "block";
 	mhdiv.style.display = "flex";
