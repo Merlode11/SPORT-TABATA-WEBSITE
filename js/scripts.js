@@ -162,7 +162,7 @@ startbtn.onclick = function(){
 if (exsChoosed.includes("Choisir")) {
     startbtn.disabled = true
     errorStart.style.display ="block"
-	retrun alert("Vous n'avez pas configuré votre tabata !")
+	return alert("Vous n'avez pas configuré votre tabata !")
 }
     chrono.classList.remove("text-danger")
     chrono.style.display = "block";
